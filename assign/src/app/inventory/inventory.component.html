@@ -1,0 +1,62 @@
+<div class="card card-body col-md-6 offset-4 mt-5 col-md-4">
+    <form action="" [formGroup]='ProductForm' (ngSubmit)='submitForm()'>
+        <h1 class="card-header text-center">Product Details</h1>
+
+        <div class="form-group">
+            <input type="text" name="product" placeholder="Enter ProductName" formControlName="name"
+                id="name" class="form-control mb-3">
+
+        </div>
+
+
+        <div class="form-group">
+            <input type="text" name="category" placeholder="Enter ProductCategory" formControlName="category"
+                id="category" class="form-control mb-3">
+
+        </div>
+
+        <div class="form-group">
+            <input type="number" name="quantity" placeholder="Enter quantity" formControlName='quantity' id="quantity"
+                class="form-control mb-3">
+        </div>
+        <div>
+            <button class="btn btn-outline-primary" type="button" (click)='addProduct()'>Add Product</button>
+        </div>
+        <div formArrayName='ProductName' *ngFor='let name of ProductForm.get("ProductName").controls; index as i'>
+            <div [formGroupName]='i'>
+                <div class="form-group">
+
+                    <input type="text" name="ProductName" id="{{'ProductName'+i}}" placeholder="Enter ProductName"
+                        class="form-control" [formControlName]='ProductName'>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="category" placeholder="Enter ProductCategory" formControlName="category"
+                        id="category" class="form-control mb-3">
+        
+                </div>
+        
+                <div class="form-group">
+                    <input type="number" name="quantity" placeholder="Enter quantity" formControlName='quantity' id="quantity"
+                        class="form-control mb-3">
+                </div>
+
+                <div class="form-group">
+
+                    <input type="number" name="purchasePrice" id="purchasePrice"
+                        placeholder="Enter PurchasePrice" class="form-control" formControlName='PurchasePrice' class="form-control mb-3">
+                </div>
+
+                <div class="form-group">
+
+                    <input type="number" name="sellPrice" id="sellPrice" placeholder="Enter sellPrice"
+                        class="form-control" formControlName='sellPrice' class="form-control mb-3">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger" (click)='removeProduct(i)'>X</button>
+            </div>
+            <button class="btn btn-primary float-right" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
